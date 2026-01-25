@@ -45,7 +45,7 @@ const FooterSection = ({
 );
 
 import Image from "next/image";
-import FooterLogo from "../public/FooterLogo.png";
+import FooterLogo from "../../public/FooterLogo.png";
 
 export default function Footer() {
     return (

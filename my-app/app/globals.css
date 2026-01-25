@@ -178,6 +178,18 @@ body {
   margin-right: 10px;
 }
 
+/* Hide default checkmark when a feature has an explicit icon */
+.pack-feature.has-icon::before {
+  content: none;
+}
+
+.feature-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
+
 .pack-footer {
   padding: 25px;
 }
@@ -190,7 +202,7 @@ body {
   padding: 15px;
   border-radius: 8px;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: lighter;
   cursor: pointer;
 }
 
@@ -201,4 +213,15 @@ body {
 .pack-button:disabled {
   background: #ccc;
   cursor: not-allowed;
+}
+
+/* Scrollbar hide utility | Benefite component */
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

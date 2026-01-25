@@ -41,11 +41,27 @@ export default function PackCard({
       <div className="pack-body">
         <h2 className="font-bold text-lg mb-10">Detajet e Paketës</h2>
         <ul className="pack-features">
-          {features.map((feature, index) => (
-            <li key={index} className="pack-feature">
-              {feature}
-            </li>
-          ))}
+          {features.map((feature, index) => {
+            const isInternet = /internet/i.test(feature);
+            const isTelefonata = /telefonata/i.test(feature) || /minutes/i.test(feature);
+            const isValiditeti = /validiteti/i.test(feature);
+            const hasIcon = isInternet || isTelefonata || isValiditeti;
+            return (
+              <li key={index} className={`pack-feature ${hasIcon ? 'has-icon' : ''}`}>
+                {isInternet && (
+                  <span className="feature-icon" aria-hidden="true">
+                    <img src="/wifiIcon.svg" alt="" width={35} height={18} />
+                  </span>
+                )}
+                {(isTelefonata || isValiditeti) && (
+                  <span className="feature-icon" aria-hidden="true">
+                    <img src="/TelefonataKometareIcon.svg" alt="" width={35} height={18} />
+                  </span>
+                )}
+                <span>{feature}</span>
+              </li>
+            );
+          })}
         </ul>
       </div>
 
@@ -56,8 +72,11 @@ export default function PackCard({
           onClick={handleActivate}
           disabled={false}
         >
-          Activate
+          Zgjidh Planin
         </button>
+        <a href="./MoreDetails" className="underline ml-40 text-md pt-10">
+          Më shumë detaje
+        </a>
       </div>
     </div>
   );

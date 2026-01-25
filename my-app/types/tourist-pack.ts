@@ -57,6 +57,7 @@ export interface Pack {
   title: string;
   subtitle: string;
   price: string;
+  priceNumber: number;
   duration: string;
   features: string[];
 }

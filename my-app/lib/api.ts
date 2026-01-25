@@ -5,9 +5,7 @@ const API_URL =
 
 export async function fetchTouristPacks(): Promise<Pack[]> {
   try {
-    const response = await fetch(API_URL, {
-      next: { revalidate: 3600 }, // Cache for 1 hour
-    });
+    const response = await fetch(API_URL);
 
     if (!response.ok) {
       throw new Error(`Failed to fetch packs: ${response.status}`);
@@ -22,7 +20,7 @@ export async function fetchTouristPacks(): Promise<Pack[]> {
 }
 
 function transformApiDataToPacks(data: TouristRecommendation[]): Pack[] {
-  return data
+  const packs = data
     .map((recommendation) => {
       const mainProduct = recommendation.recommendationItem[0]?.product;
       if (!mainProduct) return null;
@@ -49,32 +47,37 @@ function transformApiDataToPacks(data: TouristRecommendation[]): Pack[] {
       const features: string[] = [];
       
       if (data) {
-        const gbValue = parseInt(data) / 100; // Convert from MB to GB
-        features.push(`Internet ${gbValue}GB `);
+        const gbValue = parseInt(data); // Convert from MB to GB
+        features.push(`Internet  ${gbValue}GB `);
       }
       
       if (minutes) {
         features.push(
-          minutes === "Unlimited" ? "Unlimited Minutes" : `Telefonata Kombëtare${minutes} `
+          minutes === "Unlimited" ? "Telefonata Kombëtare  Unlimited " : `Telefonata Kombëtare  ${minutes} `
         );
       }
       
      if (validity) {
-        features.push(`Validiteti for ${validity}`);
+        features.push(`Validiteti  ${validity}`);
       }
 
       // Get price
       const price = mainProduct.productPrice[0]?.price?.taxIncludedAmount;
       const priceValue = price ? `${price.value} ${price.unit}` : "N/A";
+      const priceNumber = price?.value || 0;
 
       return {
         id: recommendation.id,
         title: mainProduct.name,
         subtitle: mainProduct.description,
         price: priceValue,
+        priceNumber,
         duration: validity || "N/A",
         features,
       };
     })
-    .filter((pack): pack is Pack => pack !== null);
+    .filter((pack): pack is Pack => pack !== null)
+    .sort((a, b) => a.priceNumber - b.priceNumber);
+
+  return packs;
 }
