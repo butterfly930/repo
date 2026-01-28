@@ -1,9 +1,9 @@
-import { FooterSection } from "../../../constants/FooterSectionConst";
+import { FooterSection } from "./FooterSectionConst";
 import { footerLinks } from "../../../constants/FooterConstants";
 
 export default function FooterSections() {
   return (
-    <div className="footer-sections">
+    <div className="grid grid-cols-4 gap-[30px]">
       <FooterSection
         title="Vodafone Albania"
         links={footerLinks.VodafoneAlbania}

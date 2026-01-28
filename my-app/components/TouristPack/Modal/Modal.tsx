@@ -4,7 +4,6 @@ import ModalBody from "./ModalBody";
 import { Dispatch, SetStateAction } from "react";
 
 interface ModalProps {
-  // setIsModalOpen: (isOpen: boolean) => void;
   setIsModalOpen: Dispatch<SetStateAction<boolean>>;
 }
 

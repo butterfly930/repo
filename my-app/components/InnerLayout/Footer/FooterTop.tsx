@@ -3,7 +3,7 @@ import FooterLogo from "../../../public/FooterLogo.png";
 
 export default function FooterTop() {
   return (
-    <div className="footer-top">
+    <div className="grid grid-cols-[1fr_2fr] gap-[40px] mb-[3px]">
       <Image
         src={FooterLogo}
         alt="Footer Logo"

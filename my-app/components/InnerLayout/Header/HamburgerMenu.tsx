@@ -1,14 +1,17 @@
 import { hamburgerStyles } from "@/constants/HeaderConstants";
+import { Dispatch, SetStateAction } from "react";
+
+interface HamburgerMenuProps {
+  setIsMenuHamburgerOpen: boolean;
+  onMenuToggle: Dispatch<SetStateAction<boolean>>;
+}
 
 export const HamburgerMenu = ({
-  isMenuOpen,
-  setIsMenuOpen,
-}: {
-  isMenuOpen: boolean;
-  setIsMenuOpen: (isOpen: boolean) => void;
-}): React.ReactElement => (
+  setIsMenuHamburgerOpen,
+  onMenuToggle,
+}: HamburgerMenuProps) => (
   <button
-    onClick={() => setIsMenuOpen(!isMenuOpen)}
+    onClick={() => onMenuToggle(true)}
     className="lg:hidden flex flex-col gap-1.5 p-2"
     aria-label="Toggle menu"
   >
@@ -16,7 +19,7 @@ export const HamburgerMenu = ({
       <span
         key={i}
         className={`block w-6 h-0.5 bg-white transition-transform group-hover:bg-red-600 cursor-pointer ${
-          isMenuOpen ? style.transform || style.opacity : ""
+          setIsMenuHamburgerOpen ? style.transform || style.opacity : ""
         }`}
       />
     ))}

@@ -9,7 +9,7 @@ export const getIconForFeature = (feature: string) => {
     return null;
   };
 
-
+export const PACK_SUBTITLE = "Shijo komunikim të pandërprerë dhe navigo në rrjetin më të mirë në Shqipëri!";
 
 export const parseFeature = (feature: string): { label: string; value: string } => {
   const f = feature.trim();

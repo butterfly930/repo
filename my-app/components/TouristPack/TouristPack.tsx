@@ -4,19 +4,10 @@ import Albania3 from "../../public/Albania3.jpg";
 import PackCard from "./PackCard/PackCard";
 import { fetchTouristPacks } from "@/lib/api/api";
 
+const packImages = [Albania1, Albania2, Albania3];
+
 export async function TouristPack() {
   const packs = await fetchTouristPacks();
-
-  // Error case
-  // if (error) {
-  //   return (
-  //     <section className="w-full px-4 max-w-7xl mx-auto">
-  //       <p className="text-center text-red-600">
-  //         Failed to load tourist packs. Please try again later.
-  //       </p>
-  //     </section>
-  //   );
-  // }
 
   // Empty state
   if (!packs || packs.length === 0) {
@@ -28,8 +19,6 @@ export async function TouristPack() {
       </section>
     );
   }
-
-  const packImages = [Albania1, Albania2, Albania3];
 
   return (
     <section className="w-full px-4 max-w-7xl mx-auto">

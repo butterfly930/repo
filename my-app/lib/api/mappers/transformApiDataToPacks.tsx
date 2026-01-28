@@ -1,11 +1,10 @@
 import { TouristRecommendation, Pack } from "@/types/tourist-pack";
 
 export default function transformApiDataToPacks(data: TouristRecommendation[]): Pack[] {
-  console.log("Transform input data:", JSON.stringify(data, null, 2));
-  
+
   const packs = data
     .map((recommendation) => {
-      // Add safety check
+      // Safety check
       if (!recommendation.recommendationItem || recommendation.recommendationItem.length === 0) {
         console.warn("Missing recommendationItem for:", recommendation.id);
         return null;
@@ -17,7 +16,7 @@ export default function transformApiDataToPacks(data: TouristRecommendation[]): 
         return null;
       }
 
-      const internetProduct = mainProduct.product.find(
+      const internetProduct = mainProduct.product?.find(
         (product) => product.id === "internet"
       );
       if (!internetProduct) {
@@ -27,7 +26,7 @@ export default function transformApiDataToPacks(data: TouristRecommendation[]): 
 
       // Helper function to get characteristic value
       const getCharValue = (name: string): string => {
-        const char = internetProduct.productCharacteristic.find(
+        const char = internetProduct.productCharacteristic?.find(
           (characteristic) => characteristic.name === name
         );
         return char?.value || "";

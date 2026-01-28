@@ -8,6 +8,7 @@ import PackFeatures from "./PackFeatures";
 import PackFooter from "./PackFooter";
 import { getIconForFeature, parseFeature } from "@/constants/PackCardConst";
 import VFsmallIconPack from "@/public/VFsmallIconPack.png";
+import { PACK_SUBTITLE } from "@/constants/PackCardConst";
 
 export default function PackCard({
   title,
@@ -21,7 +22,7 @@ export default function PackCard({
 
   return (
     <>
-      <div className="mb-20 min-w-[340px] md:min-w-[600px] bg-white rounded-lg shadow-md overflow-hidden grid grid-cols-[200px_1fr]">
+      <div className="mb-20 min-w-[340px] md:min-w-[600px] bg-white rounded-[10px] shadow-[0_4px_15px_rgba(0,0,0,0.1)] overflow-hidden grid grid-cols-[200px_1fr] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_25px_rgba(0,0,0,0.15)]">
         {/* LEFT IMAGE */}
         <div className="relative md:h-full w-full">
           <Image src={image} alt={title} fill className="object-cover" />
@@ -31,20 +32,21 @@ export default function PackCard({
         <div className="p-4 md:p-6 flex flex-col justify-between cursor-pointer">
           <div className="flex items-center gap-2 mb-4 bg-gray-100 md:p-3 rounded-md">
             <Image
-            src={VFsmallIconPack}
-            alt="VF Small Icon for Tourist Pack"
-            width={30}
-            height={30}
-            className="md:w-[30px] md:h-[30px] flex-shrink-0"
+              src={VFsmallIconPack}
+              alt="VF Small Icon for Tourist Pack"
+              width={30}
+              height={30}
+              className="md:w-[30px] md:h-[30px] flex-shrink-0"
             />
             <h2 className="text-xs md:text-xs mb-2 text-black">
-              Përfito akses në zbritje të shumta në partnerët e Vodafone (kafene, restorante, transport dhe shumë më tepër)
+              Përfito akses në zbritje të shumta në partnerët e Vodafone
+              (kafene, restorante, transport dhe shumë më tepër)
             </h2>
           </div>
           <PackHeader
             title={title}
             price={price}
-            subtitle="Shijo komunikim të pandërprerë dhe navigo në rrjetin më të mirë në Shqipëri!"
+            subtitle={PACK_SUBTITLE}
             duration={duration}
             features={features}
             image={image}

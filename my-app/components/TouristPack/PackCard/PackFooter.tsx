@@ -7,13 +7,13 @@ interface PackFooterProps {
 
 export default function PackFooter({ setIsModalOpen }: PackFooterProps) {
   return (
-    <div className="mt-6 flex flex-col gap-3">
-      <button className="px-5 py-2 bg-red-600 text-white rounded hover:opacity-80">
+    <div className="p-[25px] flex flex-col gap-3">
+      <button className="w-full bg-[#e60000] text-white border-none py-[15px] rounded-[8px] text-[16px] font-light cursor-pointer hover:bg-[#cc0000] disabled:bg-[#ccc] disabled:cursor-not-allowed">
         Zgjidh Planin
       </button>
       <button
         onClick={() => setIsModalOpen(true)}
-        className="underline text-sm text-red-600 hover:text-black text-center"
+        className="underline text-[14px] text-[#ccc] hover:text-[#e60000] text-center"
       >
         Më shumë detaje
       </button>

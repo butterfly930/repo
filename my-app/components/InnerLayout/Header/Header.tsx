@@ -8,18 +8,10 @@ import DesktopNavigation from "./DesktopNavigation";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuHamburgerOpen, setIsMenuHamburgerOpen] = useState(false);
 
   return (
-    <header
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        padding: "0.8rem",
-        backgroundColor: "#625d5d",
-        position: "relative",
-      }}
-    >
+    <header className="flex items-center justify-between p-3 bg-[#625d5d] relative">
       <Link href="/">
         <Image
           src="/VodafoneLogo.png"
@@ -31,7 +23,10 @@ export default function Header() {
       </Link>
 
       <DesktopNavigation />
-      <HamburgerMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+      <HamburgerMenu
+        setIsMenuHamburgerOpen={isMenuHamburgerOpen}
+        onMenuToggle={setIsMenuHamburgerOpen}
+      />
       <MobileNavigation isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
     </header>
   );

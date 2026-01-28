@@ -6,7 +6,7 @@ import { DropDown } from "../../public/icons/DropdownIcon";
 
 function FaqItem({ question, answer }: FaqItemProps) {
   const [open, setOpen] = useState<boolean>(false);
-  const onClick = () => setOpen(!open);
+  const onClick = () =>  setOpen(prevState => !prevState);
   return (
     <div className="border-b border-gray-300">
        <button

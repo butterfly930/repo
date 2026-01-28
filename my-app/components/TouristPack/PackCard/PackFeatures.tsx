@@ -7,25 +7,28 @@ export default function PackFeatures({
   parseFeature,
 }: PackFeaturesProps) {
   return (
-    <ul className="mt-4 space-y-1">
+    <ul className="list-none mt-4">
       <p className="text-md font-semibold text-black">Detajet e paketes</p>
       {features.map((feature: string, id: number) => {
         const icon = getIconForFeature(feature);
         const { label, value } = parseFeature(feature);
-
         return (
           <li
             key={id}
-            className="text-sm text-black flex items-center gap-3 mt-6"
+            className="py-[10px] flex items-center text-black gap-3 border-b border-gray-100 last:border-b-0"
           >
-            {icon && (
-              <Image
-                src={icon}
-                alt="feature icon"
-                width={36}
-                height={36}
-                className="flex-shrink-0"
-              />
+            {icon ? (
+              <span className="inline-flex items-center justify-center mr-[10px]">
+                <Image
+                  src={icon}
+                  alt="feature icon"
+                  width={36}
+                  height={36}
+                  className="flex-shrink-0"
+                />
+              </span>
+            ) : (
+              <span className="font-bold text-[#e60000] mr-[10px]">✓</span>
             )}
             <div className="flex justify-between w-full">
               <span className="text-lg">{label}</span>

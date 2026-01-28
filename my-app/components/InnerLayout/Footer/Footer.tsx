@@ -6,16 +6,9 @@ import FooterBottom from "./FooterBottom";
 export default function Footer() {
   return (
     <footer
-      className="footer"
-      style={{
-        backgroundColor: "#000000",
-        padding: "2rem",
-        display: "flex",
-        flexDirection: "column",
-        color: "white",
-      }}
+      className="bg-black p-8 flex flex-col text-white"
     >
-      <div className="footer-content">
+      <div className="max-w-[1200px] mx-auto pt-[40px] pb-[20px] px-[20px]">
        <FooterTop />
         <FooterDescription />
         <FooterSections />

@@ -1,7 +1,7 @@
 // api.ts
 import { z } from "zod";
 import { Pack } from "@/types/tourist-pack";
-import transformApiDataToPacks from "@/lib/api/transformApiDataToPacks";
+import transformApiDataToPacks from "@/lib/api/mappers/transformApiDataToPacks";
 import { TouristRecommendationSchema } from "@/lib/api/schemas/touristPackZODSchema";
 
 export async function fetchTouristPacks(): Promise<Pack[]> {
@@ -11,9 +11,8 @@ export async function fetchTouristPacks(): Promise<Pack[]> {
       headers: {
         "Content-Type": "application/json",
       },
-      cache: "no-store",
+      next: { revalidate: 3600 }, // Cache for 1 hour (3600 seconds)
     });
-
     if (!response.ok) {
       throw new Error(`API request failed: ${response.status}`);
     }

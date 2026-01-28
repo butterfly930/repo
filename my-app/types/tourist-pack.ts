@@ -47,20 +47,20 @@ export interface TouristRecommendation {
   id?: string;
   recommendationItem?: {
     product?: {
-      name: string;
-      description: string;
-      product: {
-        id: string;
-        productCharacteristic: {
-          name: string;
-          value: string;
+      name?: string;
+      description?: string;
+      product?: {
+        id?: string;
+        productCharacteristic?: {
+          name?: string;
+          value?: string;
         }[];
       }[];
-      productPrice: {
-        price: {
-          taxIncludedAmount: {
-            value: number;
-            unit: string;
+      productPrice?: {
+        price?: {
+          taxIncludedAmount?: {
+            value?: number;
+            unit?: string;
           };
         };
       }[];
