@@ -215,6 +215,40 @@ body {
   cursor: not-allowed;
 }
 
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 22px;
+    margin: 20px 0;
+  }
+
+  .pack-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin: 20px 0;
+  }
+
+  .pack-header,
+  .pack-body,
+  .pack-footer {
+    padding: 16px;
+  }
+
+  .pack-title {
+    font-size: 22px;
+  }
+
+  .pack-price {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .pack-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 /* Scrollbar hide utility | Benefite component */
 
 .scrollbar-hide::-webkit-scrollbar {

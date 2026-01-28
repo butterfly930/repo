@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import LayoutPage from "@/components/Layout/Layout";
+import InnerLayout from "@/components/InnerLayout/InnerLayout";
 import { ReactNode } from "react";
 
 export const metadata: Metadata = {
@@ -17,11 +17,7 @@ export default function RootLayout({
   return (
     <html lang="sq">
       <body>
-
-        <LayoutPage>
-        {children}
-        </LayoutPage>
-
+        <InnerLayout>{children}</InnerLayout>
       </body>
     </html>
   );
