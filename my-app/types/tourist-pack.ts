@@ -44,11 +44,28 @@ export interface RecommendationItem {
 }
 
 export interface TouristRecommendation {
-  id: string;
-  name: string;
-  description: string;
-  recommendationType: string;
-  recommendationItem: RecommendationItem[];
+  id?: string;
+  recommendationItem?: {
+    product?: {
+      name?: string;
+      description?: string;
+      product?: {
+        id?: string;
+        productCharacteristic?: {
+          name?: string;
+          value?: string;
+        }[];
+      }[];
+      productPrice?: {
+        price?: {
+          taxIncludedAmount?: {
+            value?: number;
+            unit?: string;
+          };
+        };
+      }[];
+    };
+  }[];
 }
 
 // Transformed Pack Type for UI
@@ -60,4 +77,21 @@ export interface Pack {
   priceNumber: number;
   duration: string;
   features: string[];
+}
+
+//PacCardProps
+import { StaticImageData } from "next/image";
+export default interface PackCardProps {
+  title: string;
+  price: string;
+  subtitle: string;
+  duration: string;
+  features: string[];
+  image: StaticImageData;
+}
+
+export interface PackFeaturesProps {
+    features: string[];
+    getIconForFeature: (feature: string) => string | null;
+    parseFeature: (feature: string) => { label: string; value: string };
 }
